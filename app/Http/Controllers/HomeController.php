@@ -18,7 +18,13 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // Use demo authentication middleware instead of database auth
+        $this->middleware(function ($request, $next) {
+            if (!session('demo_user_authenticated')) {
+                return redirect()->route('login');
+            }
+            return $next($request);
+        });
     }
 
     /**
