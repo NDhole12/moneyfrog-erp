@@ -1,0 +1,32 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore logs
+*.log
+logs/
+
+# Ignore temporary files
+tmp/
+temp/
+
+# Ignore configuration files with sensitive data
+config/database.php
+config/secrets.php
+
+# Ignore vendor dependencies (if using Composer)
+vendor/
+
+# Ignore uploaded files
+uploads/
+files/
+
+# Ignore cache files
+cache/
+*.cache
