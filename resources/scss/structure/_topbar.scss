@@ -28,12 +28,10 @@
     align-items: center;
     margin: 0 auto;
     height: $header-height;
-    padding: 0 $grid-gutter-width 0 calc(#{$grid-gutter-width} * 0.5)
-    /*rtl: 0 0 0 calc(#{$grid-gutter-width} * 0.5) */
-    ;
+    padding: 0 calc(#{$grid-gutter-width} * 0.5) 0 0;
 
     @media (max-width: 767.98px) {
-        padding: 0 calc(#{$grid-gutter-width} * 0.5) 0 calc(#{$grid-gutter-width} * 0.5);
+        padding: 0 calc(#{$grid-gutter-width} * 0.5);
     }
 
     .topbar-head-dropdown {
@@ -352,9 +350,7 @@
 
         @media (max-width: 1024.1px) {
             padding: calc(45px + #{$grid-gutter-width} * 1.8) calc(#{$grid-gutter-width} * 0.5) $footer-height calc(#{$grid-gutter-width} * 0.5);
-        }
-
-        padding: calc(45px + #{$grid-gutter-width}) calc(#{$grid-gutter-width} * 0.5) $footer-height calc(#{$grid-gutter-width} * 0.5);
+                }
     }
 
     &[data-layout-width="boxed"] {

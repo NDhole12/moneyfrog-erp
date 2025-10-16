@@ -193,11 +193,7 @@
 .navbar-brand-box {
     padding: 0 1.3rem;
     text-align: center;
-    transition: all .1s ease-out;
-
-    @media (max-width: 767.98px) {
-        display: none;
-    }
+    width: $navbar-brand-box-width;
 }
 
 .hamburger-icon {
@@ -274,14 +270,6 @@
                 transition-delay: 100ms;
             }
         }
-    }
-}
-
-.logo {
-    line-height: $header-height;
-
-    .logo-sm {
-        display: none;
     }
 }
 

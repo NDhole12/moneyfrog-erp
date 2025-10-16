@@ -17,7 +17,7 @@
     <!-- Begin page -->
     <div id="layout-wrapper">
 
-     @include('layouts.topbar')
+     @include('layouts.erp_top_bar')
      @include('layouts.sidebar')
         <!-- ============================================================== -->
         <!-- Start right Content here -->

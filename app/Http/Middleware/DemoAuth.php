@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class DemoAuth
 {
     /**
-     * Handle an incoming request for demo authentication.
+     * Handle an incoming request for session authentication.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
@@ -16,8 +16,8 @@ class DemoAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        // Check if user is authenticated in demo mode
-        if (!session('demo_user_authenticated')) {
+        // Check if user is authenticated
+        if (!session('user_authenticated')) {
             return redirect()->route('login');
         }
 

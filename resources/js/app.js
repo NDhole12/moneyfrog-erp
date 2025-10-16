@@ -427,7 +427,7 @@ File: Main Js File
                     if (!(currentPath == "/" + element.getAttribute("href") && !element.getAttribute("data-bs-toggle")))
                         document.body.classList.contains("twocolumn-panel") ? document.body.classList.remove("twocolumn-panel") : "";
                     document.getElementById("navbar-nav").classList.remove("twocolumn-nav-hide");
-                    document.querySelector(".hamburger-icon").classList.remove("open");
+                    // document.querySelector(".hamburger-icon").classList.remove("open");
                     if ((e.target && e.target.matches("a.nav-icon")) || (e.target && e.target.matches("i"))) {
                         if (document.querySelector("#two-column-menu ul .nav-icon.active") !== null)
                             document.querySelector("#two-column-menu ul .nav-icon.active").classList.remove("active");
@@ -449,7 +449,7 @@ File: Main Js File
                     element.classList.add("active");
                     document.getElementById("navbar-nav").classList.add("twocolumn-nav-hide");
                     if (document.querySelector(".hamburger-icon")) {
-                        document.querySelector(".hamburger-icon").classList.add("open");
+                        // document.querySelector(".hamburger-icon").classList.add("open");
                     }
                 }
             });
@@ -690,7 +690,7 @@ File: Main Js File
                 document.documentElement.setAttribute("data-sidebar-size", sessionStorage.getItem("data-sidebar-size"));
             }
             if (document.querySelector(".hamburger-icon")) {
-                document.querySelector(".hamburger-icon").classList.remove("open");
+                // document.querySelector(".hamburger-icon").classList.remove("open");
             }
         } else if (windowSize <= 767) {
             document.body.classList.remove("vertical-sidebar-enable");
@@ -757,7 +757,7 @@ File: Main Js File
         var windowSize = document.documentElement.clientWidth;
 
         if (windowSize > 767)
-            document.querySelector(".hamburger-icon").classList.toggle("open");
+            // document.querySelector(".hamburger-icon").classList.toggle("open");
 
         //For collapse horizontal menu
         if (document.documentElement.getAttribute("data-layout") === "horizontal") {

@@ -1,0 +1,67 @@
+/*
+Template Name: Velzon - Admin & Dashboard Template
+Author: Themesbrand
+Website: https://themesbrand.com/
+Contact: support@themesbrand.com
+File: Custom CSS File
+*/
+
+/* ============================================
+   MoneyFrog ERP Custom Styles
+   ============================================ */
+
+/* Custom CSS Variables */
+:root {
+    --vz-primary: #ADD671 !important;
+    --vz-primary-bg-subtle: #ADD671;
+    --vz-btn-color: #FFF;
+    /* --vz-primary-rgb: #add671;
+    --vz-primary: #add671;
+    --vz-purple: #add671; */
+}
+.bg-primary {
+    --vz-bg-opacity: 1;
+    background-color: #add671 !important;
+}
+.btn-soft-primary {
+    --vz-btn-color: #FFFFFF;
+}
+[data-layout="horizontal"] .navbar-menu .navbar-nav .nav-link[data-bs-toggle="collapse"][aria-expanded="true"] {
+    color: #ADD671 !important;
+}
+[data-layout=horizontal] .navbar-menu .navbar-nav .nav-link:hover {
+    color:  #ADD671 !important;
+}
+.border-primary {
+    --vz-border-opacity: 1;
+    border-color: #ADD671 !important;
+}
+[data-layout=horizontal] .navbar-menu .navbar-nav>li:nth-of-type(2)>.nav-link.menu-link {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Add your custom CSS styles here */
+
+/* Example: Custom header adjustments */
+/* .navbar-header {
+    background-color: #f8f9fa;
+} */
+
+/* Example: Custom logo styles */
+/* .horizontal-logo img {
+    max-height: 40px;
+} */
+
+/* Example: Custom colors */
+/* :root {
+    --custom-primary: #your-color;
+} */
+[data-layout=horizontal] .horizontal-logo {
+    padding-left: .75rem;
+    line-height: 70px;
+}   
+
+[data-layout=horizontal] .page-content {
+    margin-top: 50px;
+}

@@ -80,7 +80,7 @@
                             <li class="nav-item">
                                 <a href="#sidebarCalendar" class="nav-link" data-bs-toggle="collapse" role="button"
                                     aria-expanded="false" aria-controls="sidebarCalendar">
-                                    @lang('translation.calender')
+                                    @lang('translation.calendar')
                                 </a>
                                 <div class="collapse menu-dropdown" id="sidebarCalendar">
                                     <ul class="nav nav-sm flex-column">
@@ -779,7 +779,8 @@
                                         <a href="ui-lists" class="nav-link">@lang('translation.lists')</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="ui-links" class="nav-link"><span>@lang('translation.links')</span></a>
+                                        <a href="ui-links" class="nav-link"><span>@lang('translation.links')</span> <span
+                                                class="badge badge-pill bg-success">@lang('translation.new')</span></a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="ui-general" class="nav-link">@lang('translation.general')</a>
@@ -946,7 +947,7 @@
                                             <a href="charts-apex-timeline" class="nav-link">@lang('translation.timeline')</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="charts-apex-range-area" class="nav-link">@lang('translation.range-area')</a>
+                                            <a href="charts-apex-range-area" class="nav-link">@lang('translation.area')</a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="charts-apex-funnel" class="nav-link">@lang('translation.funnel')</a>
@@ -982,10 +983,9 @@
                                             <a href="charts-apex-polar" class="nav-link">@lang('translation.polar-area')</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="charts-apex-slope" class="nav-link">
-                                                <span">@lang('translation.slope')</span> <span
-                                                        class="badge badge-pill bg-success">@lang('translation.new')</span>
-                                            </a>
+                                            <a href="charts-apex-slope"
+                                                class="nav-link"><span>@lang('translation.slope')</span> <span
+                                                    class="badge badge-pill bg-success">@lang('translation.new')</span></a>
                                         </li>
                                     </ul>
                                 </div>

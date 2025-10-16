@@ -32,3 +32,7 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+# Test files and documentation
+/test_file/
+/documentation/

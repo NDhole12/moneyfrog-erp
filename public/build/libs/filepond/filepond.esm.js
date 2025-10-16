@@ -1,5 +1,5 @@
 /*!
- * FilePond 4.32.8
+ * FilePond 4.31.1
  * Licensed under MIT, https://opensource.org/licenses/MIT/
  * Please visit https://pqina.nl/filepond/ for details.
  */
@@ -2904,7 +2904,6 @@ const processFileChunked = (
         // allow parsing of formdata
         const ondata = chunkServer.ondata || (fd => fd);
         const onerror = chunkServer.onerror || (res => null);
-        const onload = chunkServer.onload || (() => {});
 
         // send request object
         const requestUrl = buildURL(apiUrl, chunkServer.url, state.serverId);
@@ -2925,10 +2924,7 @@ const processFileChunked = (
             headers,
         }));
 
-        request.onload = xhr => {
-            // allow hooking into request result
-            onload(xhr, chunk.index, chunks.length);
-
+        request.onload = () => {
             // done!
             chunk.status = ChunkStatus.COMPLETE;
 
@@ -6898,19 +6894,6 @@ const updateRequiredStatus = ({ root }) => {
     if (root.query('GET_TOTAL_ITEMS') > 0) {
         attrToggle(element, 'required', false);
         attrToggle(element, 'name', false);
-
-        // still has items
-        const activeItems = root.query('GET_ACTIVE_ITEMS');
-        let hasInvalidField = false;
-        for (let i = 0; i < activeItems.length; i++) {
-            if (activeItems[i].status === ItemStatus.LOAD_ERROR) {
-                hasInvalidField = true;
-            }
-        }
-        // set validity status
-        root.element.setCustomValidity(
-            hasInvalidField ? root.query('GET_LABEL_INVALID_FIELD') : ''
-        );
     } else {
         // add name attribute
         attrToggle(element, 'name', true, root.query('GET_NAME'));
@@ -6973,6 +6956,9 @@ const create$b = ({ root, props }) => {
 
     // use for labeling file input (aria-labelledby on file input)
     attr(label, 'id', `filepond--drop-label-${props.id}`);
+
+    // hide the label for screenreaders, the input element will read the contents of the label when it's focussed. If we don't set aria-hidden the screenreader will also navigate the contents of the label separately from the input.
+    attr(label, 'aria-hidden', 'true');
 
     // handle keys
     root.ref.handleKeyDown = e => {
@@ -7146,12 +7132,7 @@ const setInputFiles = (element, files) => {
     return true;
 };
 
-const create$c = ({ root }) => {
-    root.ref.fields = {};
-    const legend = document.createElement('legend');
-    legend.textContent = 'Files';
-    root.element.appendChild(legend);
-};
+const create$c = ({ root }) => (root.ref.fields = {});
 
 const getField = (root, id) => root.ref.fields[id];
 
@@ -7171,6 +7152,7 @@ const didAddItem = ({ root, action }) => {
     const dataContainer = createElement$1('input');
     dataContainer.type = shouldUseFileInput ? 'file' : 'hidden';
     dataContainer.name = root.query('GET_NAME');
+    dataContainer.disabled = root.query('GET_DISABLED');
     root.ref.fields[action.id] = dataContainer;
     syncFieldPositionsWithItems(root);
 };
@@ -7780,13 +7762,7 @@ const listeners$1 = [];
 const handlePaste = e => {
     // if is pasting in input or textarea and the target is outside of a filepond scope, ignore
     const activeEl = document.activeElement;
-    const isActiveElementEditable =
-        activeEl &&
-        (/textarea|input/i.test(activeEl.nodeName) ||
-            activeEl.getAttribute('contenteditable') === 'true' ||
-            activeEl.getAttribute('contenteditable') === '');
-
-    if (isActiveElementEditable) {
+    if (activeEl && /textarea|input/i.test(activeEl.nodeName)) {
         // test textarea or input is contained in filepond root
         let inScope = false;
         let element = activeEl;
@@ -7862,7 +7838,7 @@ const createPaster = () => {
  */
 const create$d = ({ root, props }) => {
     root.element.id = `filepond--assistant-${props.id}`;
-    attr(root.element, 'role', 'alert');
+    attr(root.element, 'role', 'status');
     attr(root.element, 'aria-live', 'polite');
     attr(root.element, 'aria-relevant', 'additions');
 };
@@ -8088,10 +8064,11 @@ const create$e = ({ root, props }) => {
     if (hasCredits) {
         const frag = document.createElement('a');
         frag.className = 'filepond--credits';
+        frag.setAttribute('aria-hidden', 'true');
         frag.href = credits[0];
-        frag.tabIndex = -1;
+        frag.tabindex = -1;
         frag.target = '_blank';
-        frag.rel = 'noopener noreferrer nofollow';
+        frag.rel = 'noopener noreferrer';
         frag.textContent = credits[1];
         root.element.appendChild(frag);
         root.ref.credits = frag;

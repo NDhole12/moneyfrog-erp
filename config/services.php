@@ -30,4 +30,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'demo_login' => [
+        'base_url' => env('COMMON_API_LINK', 'http://localhost:3000/'),
+    ],
+
 ];
